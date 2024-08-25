@@ -3,6 +3,7 @@ import SearchBar from "./SearchBar";
 import Navbar from "./Navbar";
 import axios from "axios";
 import CountryCard from "./CountryCard";
+import FloatingTopButton from "./FloatingTopButton";
 
 type Country = {
   name: string;
@@ -71,6 +72,7 @@ const CountryList = () => {
           )}
         </>
       )}
+      <FloatingTopButton />
     </div>
   );
 };
