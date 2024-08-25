@@ -8,19 +8,20 @@ import Link from "next/link";
 const Home = () => {
   const { data: session, status } = useSession();
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const authenticated = status === "authenticated";
 
   const openLoginModal = () => setIsLoginModalOpen(true);
   const closeLoginModal = () => setIsLoginModalOpen(false);
   return (
     <>
       <Head>
-        <title>Worldly</title>
+        <title>Worldly {authenticated ? "| Home" : ""}</title>
       </Head>
       <div className="h-screen flex flex-col items-center justify-center bg-gray-50">
         <Navbar />
         <div className="relative w-full h-screen overflow-hidden">
           <div className="absolute w-full h-[80vh] bg-lime-300 rounded-t-full bottom-0 left-0"></div>
-          {status === "authenticated" ? (
+          {authenticated ? (
             <div className="relative z-10 text-center flex flex-col items-center justify-center h-full px-4">
               <p className="text-8xl md:mb-5">🙋🏻‍♂️</p>
               <h1 className="text-4xl md:text-7xl font-medium text-black mb-2">
