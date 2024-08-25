@@ -1,4 +1,5 @@
 import Head from "next/head";
+import CountryList from "./components/CountryList";
 
 export default function CountryPage() {
   return (
@@ -6,7 +7,7 @@ export default function CountryPage() {
       <Head>
         <title>Country List</title>
       </Head>
-      <div>Country List</div>
+      <CountryList />
     </>
   );
 }
