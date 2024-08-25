@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import axios from "axios";
 import CountryCard from "./CountryCard";
 import FloatingTopButton from "./FloatingTopButton";
+import Loading from "./Loading";
 
 type Country = {
   name: string;
@@ -17,6 +18,7 @@ const CountryList = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
   const [visibleCount, setVisibleCount] = useState<number>(3);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchCountries = async () => {
@@ -30,6 +32,8 @@ const CountryList = () => {
       } catch (err) {
         setError("Failed to load countries. Please try again later.");
         console.error(err);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -54,7 +58,9 @@ const CountryList = () => {
       <div className="w-full max-w-4xl px-4">
         <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       </div>
-      {error ? (
+      {loading ? (
+        <Loading />
+      ) : error ? (
         <p className="text-red-500 text-center">{error}</p>
       ) : (
         <>
