@@ -1,8 +1,14 @@
+import { signOut } from "next-auth/react";
+
 type LogoutModalProps = {
   closeModal: () => void;
 };
 
 const LogoutModal = ({ closeModal }: LogoutModalProps) => {
+  const handleLogout = () => {
+    signOut({ callbackUrl: "/" });
+  };
+
   return (
     <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-white p-8 rounded-lg shadow-lg text-center">
@@ -14,7 +20,10 @@ const LogoutModal = ({ closeModal }: LogoutModalProps) => {
         >
           Cancel
         </button>
-        <button className="px-6 py-3 bg-red-500 hover:bg-red-600 text-white rounded-full mb-4">
+        <button
+          onClick={handleLogout}
+          className="px-6 py-3 bg-red-500 hover:bg-red-600 text-white rounded-full mb-4"
+        >
           Yes
         </button>
       </div>

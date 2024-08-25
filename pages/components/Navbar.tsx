@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { useState } from "react";
 import LogoutModal from "./LogoutModal";
+import { useSession } from "next-auth/react";
 
 const Navbar = () => {
+  const { status } = useSession();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
@@ -16,20 +18,22 @@ const Navbar = () => {
       >
         w✦rldly
       </Link>
-      <div className="flex justify-center items-center gap-2 mt-2">
-        <Link
-          href="/country"
-          className="text-lg md:text-2xl text-gray-800 border-r-2 border-gray-800 pr-2 hover:underline"
-        >
-          Country List
-        </Link>
-        <button
-          onClick={openModal}
-          className="text-lg md:text-2xl text-red-500 hover:underline"
-        >
-          Sign Out
-        </button>
-      </div>
+      {status === "authenticated" && (
+        <div className="flex justify-center items-center gap-2 mt-2">
+          <Link
+            href="/country"
+            className="text-lg md:text-2xl text-gray-800 border-r-2 border-gray-800 pr-2 hover:underline"
+          >
+            Country List
+          </Link>
+          <button
+            onClick={openModal}
+            className="text-lg md:text-2xl text-red-500 hover:underline"
+          >
+            Sign Out
+          </button>
+        </div>
+      )}
       {isModalOpen && <LogoutModal closeModal={closeModal} />}
     </header>
   );

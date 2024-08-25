@@ -1,6 +1,22 @@
+import { signIn } from "next-auth/react";
+
 const GoogleButton = () => {
+  const handleGoogleSignIn = async () => {
+    try {
+      await signIn("google", {
+        callbackUrl: "/",
+        prompt: "select_account",
+      });
+    } catch (error) {
+      console.error("Error during sign-in:", error);
+    }
+  };
+
   return (
-    <button className="flex justify-center items-center px-6 py-3 bg-white border-2 border-gray-500 text-gray-800 rounded-full mb-4 mx-auto">
+    <button
+      onClick={handleGoogleSignIn}
+      className="flex justify-center items-center px-6 py-3 bg-white border-2 border-gray-500 text-gray-800 rounded-full mb-4 mx-auto"
+    >
       <p className="mr-2">Sign in with</p>
       <GoogleLogo />
     </button>
