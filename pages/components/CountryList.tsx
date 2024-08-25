@@ -21,9 +21,7 @@ const CountryList = () => {
   useEffect(() => {
     const fetchCountries = async () => {
       try {
-        const response = await axios.get(
-          "https://yourtessera-backend-api-staging.up.railway.app/locations/countries"
-        );
+        const response = await axios.get("/api/locations/countries");
         setCountries(response.data);
         setFilteredCountries(response.data);
       } catch (err) {
