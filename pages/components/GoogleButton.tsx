@@ -1,25 +1,49 @@
+import { useState } from "react";
 import { signIn } from "next-auth/react";
+import Alert from "./Alert";
 
 const GoogleButton = () => {
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertType, setAlertType] = useState<"success" | "error">("success");
+  const [alertMessage, setAlertMessage] = useState("");
+
   const handleGoogleSignIn = async () => {
     try {
       await signIn("google", {
         callbackUrl: "/",
         prompt: "select_account",
       });
+      setAlertType("success");
+      setAlertMessage("Signed in successfully.");
+      setShowAlert(true);
     } catch (error) {
-      console.error("Error during sign-in:", error);
+      setAlertType("error");
+      setAlertMessage("Error during sign-in. Please try again.");
+      setShowAlert(true);
     }
   };
 
+  const handleCloseAlert = () => {
+    setShowAlert(false);
+  };
+
   return (
-    <button
-      onClick={handleGoogleSignIn}
-      className="flex justify-center items-center px-6 py-3 bg-white border-2 border-gray-500 text-gray-800 rounded-full mb-4 mx-auto"
-    >
-      <p className="mr-2">Sign in with</p>
-      <GoogleLogo />
-    </button>
+    <>
+      <button
+        onClick={handleGoogleSignIn}
+        className="flex justify-center items-center px-6 py-3 bg-white border-2 border-gray-500 hover:border-blue-500 text-gray-800 rounded-full mb-4 mx-auto"
+      >
+        <p className="mr-2">Sign in with</p>
+        <GoogleLogo />
+      </button>
+      {showAlert && (
+        <Alert
+          type={alertType}
+          message={alertMessage}
+          onClose={handleCloseAlert}
+        />
+      )}
+    </>
   );
 };
 

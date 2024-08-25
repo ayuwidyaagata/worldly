@@ -23,7 +23,7 @@ const Home = () => {
           <div className="absolute w-full h-[80vh] bg-lime-300 rounded-t-full bottom-0 left-0"></div>
           {authenticated ? (
             <div className="relative z-10 text-center flex flex-col items-center justify-center h-full px-4">
-              <p className="text-8xl md:mb-5">🙋🏻‍♂️</p>
+              <p className="text-8xl my-5">🙋🏻‍♂️</p>
               <h1 className="text-4xl md:text-7xl font-medium text-black mb-2">
                 Hello,
               </h1>
