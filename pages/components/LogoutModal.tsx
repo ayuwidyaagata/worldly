@@ -1,12 +1,25 @@
+import { useState } from "react";
 import { signOut } from "next-auth/react";
+import Alert from "./Alert";
 
 type LogoutModalProps = {
   closeModal: () => void;
 };
 
 const LogoutModal = ({ closeModal }: LogoutModalProps) => {
-  const handleLogout = () => {
-    signOut({ callbackUrl: "/" });
+  const [showAlert, setShowAlert] = useState(false);
+
+  const handleLogout = async () => {
+    try {
+      await signOut({ callbackUrl: "/" });
+      setShowAlert(true);
+    } catch (error) {
+      console.error("Error during logout:", error);
+    }
+  };
+
+  const handleCloseAlert = () => {
+    setShowAlert(false);
   };
 
   return (
@@ -27,6 +40,13 @@ const LogoutModal = ({ closeModal }: LogoutModalProps) => {
           Yes
         </button>
       </div>
+      {showAlert && (
+        <Alert
+          type="success"
+          message="You have been signed out successfully."
+          onClose={handleCloseAlert}
+        />
+      )}
     </div>
   );
 };
