@@ -1,6 +1,6 @@
 # Country List Application
 
-This is a Next.js application that displays a list of countries with authentication using NextAuth and Google Provider. The application is deployed on Vercel.
+[Worldly](https://worldly-countries.vercel.app) is a Next.js application that displays a list of countries with authentication using NextAuth and Google Provider. The application is deployed on Vercel.
 
 ## Getting Started
 
@@ -9,7 +9,7 @@ This is a Next.js application that displays a list of countries with authenticat
 Before you begin, ensure you have the following installed on your local machine:
 
 - Node.js (v14 or higher)
-- npm, yarn, pnpm, or bun (package managers)
+- npm or yarn (package managers)
 
 ### Installation
 
@@ -17,16 +17,28 @@ Before you begin, ensure you have the following installed on your local machine:
 
    ```bash
    git clone https://github.com/your-username/country-list-app.git
-   cd country-list-app```
+   cd country-list-app
    
 2. **Install the dependencies:**
-   ```npm install or yarn install``
-4. **Environment Variables:**
-   ``` NEXTAUTH_URL=http://localhost:3000
-NEXTAUTH_SECRET=your_nextauth_secret
-GOOGLE_CLIENT_ID=your_google_client_id
-GOOGLE_CLIENT_SECRET=your_google_client_secret
-NEXT_PUBLIC_API_URL=your_backend_api_url
-```
-5. **Running the Development Server**
-``` npm run dev or yarn dev```
+    ```bash
+   npm install
+   # or
+   yarn install
+    
+### Running the Development Server
+
+1. **Environment Variables:**
+   ```bash
+   GOOGLE_CLIENT_ID=your_google_client_id
+   GOOGLE_CLIENT_SECRET=your_google_client_secret
+   NEXTAUTH_URL=http://localhost:3000
+   NEXTAUTH_SECRET=your_nextauth_secret
+   NEXT_PUBLIC_API_URL=your_backend_api_url
+   
+2. **Running the Development Server**
+    ```bash
+   npm run dev
+   # or
+   yarn dev
+
+Open http://localhost:3000 with your browser to see the result.
