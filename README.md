@@ -2,7 +2,7 @@
 
 [Worldly](https://worldly-countries.vercel.app) is a Next.js application that displays a list of countries with authentication using NextAuth and Google Provider. The application is deployed on Vercel.
 
-<video src="https://github.com/ayuwidyaagata/worldly/raw/main/public/worldly-demo.mp4"></video>
+<video src="https://github.com/user-attachments/assets/099c45c8-8c0b-4a7e-91bf-8a351f7606fc" />
 
 ## Getting Started
 
